@@ -1,8 +1,7 @@
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
-import Output from "./Output";
+import { useHistory } from "react-router-dom";
 
 const ReadFile = () => {
+    let data ="";
     const history = useHistory();
 
     const removeCommentsFromLines = (lines) => {
@@ -35,9 +34,7 @@ const ReadFile = () => {
         const reader = new FileReader();
         reader.onload = e => { 
             const text = e.target.result;
-            console.log(removeCommentsFromLines(splitToLines(text)));
-            let data = removeCommentsFromLines(splitToLines(text));
-            history.push('/output', [data])
+            data = splitToLines(removeCommentsFromLines(splitToLines(text)));      
         };
         reader.onerror = () =>{
             console.log(reader.error)
@@ -46,11 +43,11 @@ const ReadFile = () => {
     }
 
     return(
-        <div>
+        <>
             <h1>File Reader</h1>
             <input type="file" name="inputfile" id="inputfile" onInput={ e => handleInput(e) }></input>  
-            <button onClick={() => history.push('output')}> Output </button>    
-        </div>
+            <button onClick={() => history.push('/output', [data])}> Output </button>    
+        </>
     )
 }
 

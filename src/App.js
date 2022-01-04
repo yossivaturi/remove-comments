@@ -1,7 +1,7 @@
 import './App.css';
 import ReadFile from './components/ReadFile';
 import Output from './components/Output';
-import {Switch, Route, Link, Redirect} from 'react-router-dom';
+import {Switch, Route,Redirect} from 'react-router-dom';
 
 function App() {
   return (

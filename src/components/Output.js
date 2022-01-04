@@ -1,17 +1,10 @@
-import { useHistory } from "react-router-dom";
-
 const Output = (props) => {
-    const history = useHistory();
-    console.log(props.location.state);
-    
+    const lines = props.location.state[0];
     return(
-        <div>
+        <>
             <h1>Output</h1>
-            {/* DELETE THIS BUTTON WHEN YOU FINISH THE ASSIGNMENT */}
-            <button onClick={() => history.push('read-file')}> Read File </button>
-
-            <p>{props.location.state}</p>   
-        </div>    
+            {lines.map((line, i) => <p key={i}>{line}</p>)}
+        </>    
     )
 }
 
