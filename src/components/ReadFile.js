@@ -25,7 +25,7 @@ const ReadFile = () => {
                 lines[line] = lines[line].substring(0, i);
             }
         }  
-        return lines.join('\n');
+        return lines;
     }
 
     const splitToLines = text => text.split("\n");
@@ -34,7 +34,7 @@ const ReadFile = () => {
         const reader = new FileReader();
         reader.onload = e => { 
             const text = e.target.result;
-            data = splitToLines(removeCommentsFromLines(splitToLines(text)));      
+            data = removeCommentsFromLines(splitToLines(text));      
         };
         reader.onerror = () =>{
             console.log(reader.error)
