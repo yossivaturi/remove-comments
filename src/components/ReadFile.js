@@ -8,9 +8,9 @@ const ReadFile = () => {
         let isMultiLine = false;
         for(let line = 0; line < lines.length-1; line++){
             if(isMultiLine == true){
-                let i2 = lines[line].indexOf('*/');
-                if(i2 > 0){
-                    lines[line] = lines[line].substring(i2+2);
+                let j = lines[line].indexOf('*/');
+                if(j > 0){
+                    lines[line] = lines[line].substring(j+2);
                     isMultiLine = false;
                 }                
             }
